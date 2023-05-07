@@ -137,4 +137,58 @@ public class OKjavaGoinHome {
 	}
 
 }
-//디버거 코드를 분석 step over 명령어 하나만 실행 디버거를 통해 잘못된 코드를 찾을 수 있다.
+//디버거 코드를 분석 step over 명령어 하나만 실행 디버거를 통해 잘못된 코드를 찾을 수 있다.\
+
+0507
+import javax.swing.JOptionPane;
+
+import org.opentutorials.iot.DimmingLights;
+import org.opentutorials.iot.Elevator;
+import org.opentutorials.iot.Lighting;
+import org.opentutorials.iot.Security;
+public class OKjavaGoinHome {
+
+	public static void main(String[] args) {
+		
+		String id = JOptionPane.showInputDialog("Enter a ID");//showInputDialog는 상자에 값을입력할때까지 대기함		
+		//Elevator call
+		String bright = JOptionPane.showInputDialog("Enter a Bright Level");
+		Elevator myElevator = new Elevator(id);//Elevator 는 데이터 타입, myElevator는 변수.
+		myElevator.callForUp(1);
+		
+		//Security off
+		Security mySecurity = new Security(id);
+		mySecurity.off();
+		
+		//Light on
+		Lighting hallLamp = new Lighting("id+ /  hall lamp");
+		hallLamp.on();
+		
+		Lighting floorLamp = new Lighting("id+ / hall lamp");
+		floorLamp.on();
+		
+		DimmingLights moodLamp = new DimmingLights(id+"moodLamp");
+		moodLamp.setBright(Double.parseDouble(bright));
+		moodLamp.on();
+	}
+
+}
+//디버거 코드를 분석 step over 명령어 하나만 실행
+//showInputDialog를 통해 값을 입력해야만 작동한는 장치를 만들어 보았다.
+String id = args[0];
+String bright = args[1];
+// argument는 사용자 입력을 의미하는 문자열배열이다.
+//parameter는 함수에서 전달되어 사용되어지는 변수이다. argument는 main()함수의 매개변수로 작용한다.
+//배열은 메모리에 순서대로 차곡차곡 저장된 데이터 묶음이다.배열은 미리 데이터의 크기와 각 데이터의 종류가 지정되어야 메모리를얼마나 차지할지 정할수 있다.
+javac를 이용해 자바의 각종 명령어를 알 수 있음.
+컴파일 : 'javac 파일이름.java' 명령어를 사용하면 해당 파일이 컴퓨터가 이해할 수 있는 확장자가 .class인 파일이 생성된다. 
+
+실행 : 'java 파일이름' 명령어를 사용해 프로그램을 실행시킨다. java가 해당 파일에서 파일이름과 동일한 클래스를 찾고 main 함수를 찾은 뒤 main 안의 코드를 순차적으로 실행하고 종료한다.
+
+다른 사람이 만들어 여러 유용한 기능을 모아둔 클래스 집합, 개발 시 공동으로 사용될 수 있는 특정한 기능들을 모듈화 한 것으로, 완전한 프로그램이 아닌 특정한 부분만을 수행할 수 있도록 만들어 놓은 것. 
+패키지는 비슷한 기능을 모아둔 것, 라이브러리는 패키지들이나 파일들이 모아져 있는것이 라이브러리이다 
+
+이클립스나 비주얼 스튜디오가 설치가 안되어있거나 실행이 안될때 간략하게 터미널로 실행해 볼 수 있다
+
+
+많은 클릭 과정을 생략하고 단 한줄로 컴파일 후 실행할 수 있다. 
