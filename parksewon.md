@@ -1,9 +1,10 @@
 **helloworld출력**
 0501
-public class HelloworldApp
+public class HelloworldApp{
 	public static void main(String[] args) {
 		System.out.println("HelloWorld!!");
 	}
+}
 **데스크톱 어플리케이션 만들기**
 import javax.swing.*;   
 import java.awt.Dimension;
@@ -29,8 +30,7 @@ public class HelloWorldGUI{
 **Dimension()괄호안의 숫자로 가로 세로의 길이 조정and right를 넣어서 문자를 우측으로 보냄
 수장한 코드JLabel label = new JLabel("Hello World!!", SwingConstants.LEFT);**
 
-**사물을 자라로 제어하기, java코드를 이용해 라즈베리파이의 특정된 부위에 전기를 통하도록 할수 있음**
-
+**java코드를 이용해 라즈베리파이의 특정된 부위에 전기를 통하도록 할수 있음**
 0502
 public class Datatype{
 	public static void main(String[]args) {
@@ -108,7 +108,6 @@ public class program {
 	}
 
 }
-**iot프로그램 만들기**
 import org.opentutorials.iot.Elevator;
 import org.opentutorials.iot.Lighting;
 import org.opentutorials.iot.Security;
@@ -138,10 +137,9 @@ public class OKjavaGoinHome {
 	}
 
 }
-//디버거 코드를 분석 step over 명령어 하나만 실행 디버거를 통해 잘못된 코드를 찾을 수 있다.\
+//디버거 코드를 분석 step over 명령어 하나만 실행 디버거를 통해 잘못된 코드를 찾을 수 있다.
 
 0507
-
 import javax.swing.JOptionPane;
 
 import org.opentutorials.iot.DimmingLights;
@@ -177,17 +175,12 @@ public class OKjavaGoinHome {
 }
 //디버거 코드를 분석 step over 명령어 하나만 실행
 //showInputDialog를 통해 값을 입력해야만 작동한는 장치를 만들어 보았다.
-
 String id = args[0];
 String bright = args[1];
-
-//argument는 사용자 입력을 의미하는 문자열배열이다.
-
+// argument는 사용자 입력을 의미하는 문자열배열이다.
 //parameter는 함수에서 전달되어 사용되어지는 변수이다. argument는 main()함수의 매개변수로 작용한다.
-
 //배열은 메모리에 순서대로 차곡차곡 저장된 데이터 묶음이다.배열은 미리 데이터의 크기와 각 데이터의 종류가 지정되어야 메모리를얼마나 차지할지 정할수 있다.
 javac를 이용해 자바의 각종 명령어를 알 수 있음.
-
 컴파일 : 'javac 파일이름.java' 명령어를 사용하면 해당 파일이 컴퓨터가 이해할 수 있는 확장자가 .class인 파일이 생성된다. 
 
 실행 : 'java 파일이름' 명령어를 사용해 프로그램을 실행시킨다. java가 해당 파일에서 파일이름과 동일한 클래스를 찾고 main 함수를 찾은 뒤 main 안의 코드를 순차적으로 실행하고 종료한다.
@@ -202,7 +195,7 @@ javac를 이용해 자바의 각종 명령어를 알 수 있음.
 
 0508
 프로그램에게 사용되는 것이 API,
-사용자가 자바 프로그램을 이용할 수 있도록 만들어 놓은것이 UI 
+사용자가 자바 프로그램을 이용할 수 있도록 만들어 놓은것이 UI
 
 패키지 : 클래스들을 모아둔 것 패키지를 통해 라이브러리와 구별이 가능하다. 
 
@@ -240,7 +233,7 @@ public class Accounting {
 		System.out.println("Income : "+ (10000.0 - 10000.0*0.3));
 		System.out.println("Dividend1 : "+ (10000.0 - 10000.0*0.3)*0.5);
 		System.out.println("Dividend2 : "+ (10000.0 - 10000.0*0.3)*0.3);
-		System.out.println("Dividend3 : "+ (10000.0 - 10000.0*0.3)*0.2);
+		System.out.println("Dividend3ㅍ : "+ (10000.0 - 10000.0*0.3)*0.2);
 		
 		
 		
@@ -285,7 +278,6 @@ public class Accounting {
 }
 double valueOfSupply = Double.parseDouble(args[0]);
 //args라는 문자열을 더블형에 넣어줌
-0509
 if문을 사용한 조건문
 public class Accountingif {
 
@@ -365,7 +357,7 @@ public class Accountingif {
 		
 		
 	}
-	반복문을 사용함으로써 하나의 문장으로 여러개의 로직을 사용가능하게 한다.
+반복문을 사용함으로써 하나의 문장으로 여러개의 로직을 사용가능하게 한다.
 	public class AccountingArrayLoop {
 
 	public static void main(String[] args) {
@@ -405,6 +397,7 @@ public class Accountingif {
 	}
 
 }
+
 public class AccountingMethod {
 	public static double valueOfSupply;
 	public static double vatRate;
@@ -548,9 +541,6 @@ public class Accountingclass {
 }
 //클래스는 객체지향의 핵심으로 서로 연관된 변수와 메소드를 그룹핑해 소속관계를 명확히 해서 이름을 붙여 놓은 것이다. 사용하는 이유는 소속관계를 명확학게 해 재사용성과 유지보수를 용이하게 하기 위해서 이다.//
 //인스턴스는 하나의 클래스를 복제해서 서로다른 데이터의 값과 서로 같은 메소드를 가진 복제본을 만드는 것.
-
-//클래스는 객체지향의 핵심으로 서로 연관된 변수와 메소드를 그룹핑해 소속관계를 명확히 해서 이름을 붙여 놓은 것이다. 사용하는 이유는 소속관계를 명확학게 해 재사용성과 유지보수를 용이하게 하기 위해서 이다.//
-//인스턴스는 하나의 클래스를 복제해서 서로다른 데이터의 값과 서로 같은 메소드를 가진 복제본을 만드는 것.
 //클래스의 상태를 변경하는 행위가 버그를 유발할 가능성이 있음
 //클래스 앞에 new를 붙여 복제한 것을 인스턴스(instance)라고 함
 //static이 사용되어서는 안됨
@@ -691,6 +681,7 @@ public class ifApp {
 		System.out.println("b");
 		}
 }
+
 
 //비밀번호도 인식하게 바꾸고 논리연사자를 사용해 코드 간략화 실시
 public class AutApp {
