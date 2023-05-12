@@ -852,3 +852,130 @@ public class AutApp3 {
 	}
 
 }
+
+0511
+public class Firstmethod {
+
+	public static void main(String[] args) {
+		
+		System.out.println("Hello Method");
+		System.out.println(Math.floor(1.1));
+
+	}
+
+}
+//프로그램을 실행하기 위해서는 main이라는 특수한 메소드를 사용해야한다
+
+public class whymethod {
+	public static void printTwoTimesA() {//메소드의 이름이printTwoTimesA
+		System.out.println("-");
+		System.out.println("a");
+		System.out.println("A");
+	}
+	public static void main(String[] args) {
+		
+		printTwoTimesA();
+		printTwoTimesA();
+		printTwoTimesA();//리팩터의 기능을 이용해서 편하게 메소드화 시킬수 있음.
+		
+		
+	}
+
+}
+
+//메소드로 값을 주입하는 방법
+public class whymethod {
+	public static void printTwoTimes(String text, String delimiter) {//text, delimiter를 매개변수랑 함parameter
+		System.out.println(delimiter);
+		System.out.println(text);
+		System.out.println(text);
+	}
+	public static void main(String[] args) {
+						//인자 argument
+		printTwoTimes("a", "-");
+		printTwoTimes("a", "*");
+		printTwoTimes("a", "&");
+		printTwoTimes("b", "!");
+	}
+
+}
+
+
+//메소드의 장점은 코드가 짧아지고 코드의 사용의 용이, 수정이 쉽다는 장점이 있지만 함수안에 어떤 코드가 있는지 보기 전에는 알아채기 어렵다는 단점이 있다.
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class whymethod {
+	
+	public static void main(String[]args)throws IOException{
+		String out = twoTimes("a","-");
+		System.out.println(out);
+		FileWriter fw = new FileWriter("out.txt");
+		fw.write(out);
+		fw.close();
+		System.out.println(twoTimes("a","*"));
+	}
+	public static String twoTimes(String text, String delimiter) {
+		String out = "";
+		out = out + delimiter + "\n";
+		out = out + text + "\n";
+		out = out + text + "\n";
+		return out;
+	
+	}
+	
+}
+
+
+//메소드를 이용해 코드를 간략하고 가독성이 좋게 만들수 있다.
+public class AccountingApp {
+	//공급가액	
+	public static double valueOfSupply = 10000.0;
+			
+			//부가가치세율
+	public static double vatRate = 0.1;
+	
+	public static double getVAT() {//메소드의 리턴값이 더블형임.
+		return valueOfSupply*vatRate;
+	}
+	public static double getTotal(){
+		return valueOfSupply + getVAT();
+	}
+	
+	public static void main(String[] args) {
+		
+		//부가세
+		//double vat = valueOfSupply*vatRate;
+		double vat = getVAT();
+		//합계
+		//double total = valueOfSupply + vat;
+		double total = getTotal();
+		
+		System.out.println("Value of supply : "+valueOfSupply);	
+		System.out.println("VAT : "+getVAT());
+		System.out.println("Total : "+ getTotal());
+		
+		
+	}
+
+}
+
+
+
+class Greeting{
+	public static void hi() {
+		System.out.println("HI");
+	}
+}
+//public,protected, default, private
+public class AccesLevelModifierMethod {
+	
+	public static void main(String[] args) {
+		
+		Greeting.hi();
+
+	}
+
+}
+//private는 클래스 내부에서만 사용가능하다.
+//public은 클래스 외부에서도 사용이 가능하다.
