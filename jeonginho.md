@@ -1087,3 +1087,332 @@ public class LoopArray {
 -------------
 
 <hr/>
+
+< 2023-05-11 / JAVA 2 / 제어문 8 ~ 메소드 9 >
+-------------
+
+* 제어문 종합응용 1
+<pre><code>
+public class AuthApp3 {
+ 
+    public static void main(String[] args) {
+         
+        String[] users = {"egoing", "jinhuck", "youbin"};
+        String inputId = args[0];
+         
+        boolean isLogined = false;
+        for(int i=0; i < users.length; i++) {
+            String currentId = users[i];
+            if(currentId.equals(inputId)) {
+                isLogined = true;
+                break;
+                // break : 더 이상 현재 반복문을 진행하지 않고 빠져나오게 하는 구문.
+            }
+        }
+        System.out.println("Hi,");
+        if(isLogined) {
+            System.out.println("Master!!");
+        } else {
+            System.out.println("Who are you?");
+        }
+    }
+}
+</code></pre>
+-위 코드를 해석하면 처음부터 users 라는 문자열 형식의 데이터타입 배열에 값을 넣고, inputid 문자열을 선언하여 배열의 크기를 0으로 초기화 시켰다.   
+-이후 boolean 형식의 isLogined 를 false로 선언하고, for문안에서 currentld 문자열 데이터를 선언하여 if문으로 inputid와 같을 시 동작을 시키는 코드를 만들었다.   
+
+* 제어문 종합응용 2
+-이차원 배열을 응용한 로그인 기능
+<pre><code>
+public class AuthApp3 {
+ 
+    public static void main(String[] args) {
+         
+        //String[] users = {"egoing", "jinhuck", "youbin"};
+        String[][] users = {
+                {"egoing", "1111"},
+                {"jinhuck", "2222"},
+                {"youbin", "3333"}
+        };
+        String inputId = args[0];
+        String inputPass = args[1];
+         
+        boolean isLogined = false;
+        for(int i=0; i < users.length; i++) {
+            String[] current = users[i];
+            if(
+                    current[0].equals(inputId) && 
+                    current[1].equals(inputPass)
+            ) {
+                isLogined = true;
+                break;
+            }
+        }
+        System.out.println("Hi,");
+        if(isLogined) {
+            System.out.println("Master!!");
+        } else {
+            System.out.println("Who are you?");
+        }
+    }
+}
+</code></pre>
+-위 코드는 이차원 배열을 이용하여 하나의 배열에 각각의 원소를 두개씩 넣었다.   
+-이차원 배열을 구성하여 아이디와 비밀번호 모두 저장하는 방식의 로그인 기능을 구현한 코드이다.   
+<pre><code>
+if(current[0].equals(inputId) && current[1].equals(inputPass))
+</code></pre>
+-이 코드는 current 0번째 배열에 해당하는 값이 inputID에 지정된 값과 같고, current 1번째 배열에 해당하는 값이 inputPass에 지정된 값과 모두 같을 시 코드를 동작시킨다.   
+
+* 메소드 - 이미 익숙한 메소드
+<pre><code>
+public class FirstMethod {
+ 
+    public static void main(String[] args) {
+         
+        System.out.println("Hello Method");
+        System.out.println(Math.floor(1.1));
+    }
+}
+</code></pre>
+-이미 사용했던 메소드 : equals, contains, Mathclass-floor, main(특수)   
+-floor 메소드 : Math 클래스, double 형 자료형을 받아서 올림 연산을 수행하여 double 형으로 반환한다.   
+-main 메소드 : 특수한 메소드로, 우리가 클래스를 실행할 때 어떠한 명령을 내리지 않아도 main 메소드를 실행한다.
+
+* 메소드의 기본 형식
+-메소드를 이용한다면 쉽게 같은 코드를 재사용하고, 유지보수를 쉽게 할 수 있다.   
+<pre><code>
+public class WhyMethod {
+     
+    public static void main(String[] args) {
+         
+        // 100000000
+        printTwoTimesA();
+        // 100000000
+        printTwoTimesA();
+        // 100000000
+        printTwoTimesA();
+ 
+    }
+ 
+    public static void printTwoTimesA() {
+        System.out.println("-");
+        System.out.println("a");
+        System.out.println("a");
+    }
+}
+</code></pre>
+-중간에 작업을하는 코드가 여러 줄 있을 때 일일이 우리가 직접 코드를 복사해서 넣지 않아도 메소드를 이용하여 코드를 재사용하여서 코드의 가독성을 높일 수 있다.   
+
+* 메소드의 입력
+<pre><code>
+public class WhyMethod {
+     
+    public static void main(String[] args) {
+         
+                    //인자, argument
+            printTwoTimes("a", "-");
+            // 100000000
+            printTwoTimes("a", "*");
+            // 100000000
+            printTwoTimes("a", "&");
+            printTwoTimes("b", "!");
+ 
+    }
+                                    //매개변수,parameter 
+    public static void printTwoTimes(String text, String delimiter) {
+        System.out.println(delimiter);
+        System.out.println(text);
+        System.out.println(text);
+    }
+}
+</code></pre>
+-매개변수(파라미터)는 메소드 안에서 통용되는 변수, 메소드를 호출하고 실제 데이터값을 메소드의 파라미터 안에 넣게 될 때는 인자(아규먼트)라고 함.   
+-main 메소드는 문자열 배열인 args파라미터를 이용함.   
+
+* 메소드의 출력
+<pre><code>
+public class OutputMethod {
+     
+    public static String a() {
+        // ... 
+        return "a";
+    }
+     
+    public static int one() {
+        return 1;
+        //...
+    }
+ 
+    public static void main(String[] args) {
+ 
+        System.out.println(a());
+        System.out.println(one());
+    }
+}
+</code></pre>
+-위 코드는 값을 반환하는 메소드를 이용한 코드이다.   
+-a라는 메소드는 문자열 형식이므로 return "a";라고 작성한다.   
+-one라는 메소드는 정수 형식이므로 return 1;라고 작성한다.   
+-void는 return값이 없다.
+<pre><code>
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class WhyMethod {
+
+	public static void main(String[] args) throws IOException {
+		String out = twoTimes("a", "-");
+		System.out.println(out);
+		FileWriter fw = new FileWriter("out.txt");
+		fw.write(out);
+		fw.close();
+		System.out.println(twoTimes("a", "*"));
+	}
+	public static String twoTimes(String text, String delimiter) {
+		String out = "";
+		out = out + delimiter + "\n";
+		out = out + text + "\n";
+		out = out + text + "\n";
+		return out;
+	}
+}
+</code></pre>
+
+* 메소드의 활용
+<pre><code>
+public class AccountingApp {
+
+	public static void main(String[] args) {
+		double valueOfSupply = 10000.0; // 공급가액
+		double vatRate = 0.1; // 부가가치세율
+		double vat = valueOfSupply * vatRate; // 부가세
+		double total = valueOfSupply + vat; // 합계
+		
+		System.out.println("Value of supply : " + valueOfSupply);
+		System.out.println("VAT : " + vat);
+		System.out.println("Total : " + total);
+	}
+}
+</code></pre>
+-main 메소드 바깥으로 지역변수화 되어 있는 valueOfSupply와 vatRate, vat, total 변수들을 빼내어 전역변수화 시킨다.
+<pre><code>
+public class AccountingApp {
+    public static double valueOfSupply = 10000.0; // 공급가액
+
+    public static double vatRate = 0.1; // 부가가치세율
+ 
+    public static double getVAT() {
+        return valueOfSupply * vatRate; // 부가세
+    }
+     
+    public static double getTotal() {
+        return valueOfSupply + getVAT(); // 합계
+    }
+ 
+    public static void main(String[] args) {
+ 
+        System.out.println("Value of supply : " + valueOfSupply);
+        System.out.println("VAT : " + getVAT());
+        System.out.println("Total : " + getTotal());
+    }
+}
+</code></pre>
+-위 코드에서 공급가와 부가가치세율은 모든 메소드에서 바로 접근할 수 있게 클래스이 static 필드로 빼내었다.   
+-메소드 안에서 메소드를 호출할 수 있다.   
+-메소드 내에서 return을 통해 main에서 메소드에 접근하고 출력할 수 있다.   
+-메소드를 이요하면 재사용성이 높아진다.   
+
+* 클래스, OOP
+-클래스 : 비슷한 연관된 일을 하는 메소드와 변수들을 묶어 그룹으로 만든 것.   
+-인스턴스 : 클래스를 틀로 하여 실제로 프로그램에서 동작하는 객체들.   
+-위와 같은 클래스와 인스턴스 들과 같은 객체를 뼈대로 해서 프로그램을 만들어 가는 방식을 객체지향 프로그래밍(OOP, Object Oriented Programming)이라고 한다.   
+
+* Access Level Modifiers
+<pre><code>
+public class AccessLevelModifiersMethod {
+
+	private static void hi() {
+		System.out.println("Hi");
+	}
+	public static void main(String[] args) {
+		hi();
+	}
+}
+-접근제어자 public의 자리에 public, protected, default, private 라는 값이 올 수 있다.   
+-위 네개 모두 동작한다.   
+-public = 모든 클래스에서 실행 된다. (웬만하면 public을 사용하면 된다.)   
+-private = 같은 클래스 안에서만 사용할 수 있다.   
+</code></pre>
+<pre><code>
+class Greeting {
+	private static void hi() {
+		System.out.println("Hi");
+	}
+}
+
+public class AccessLevelModifiersMethod {
+
+	public static void main(String[] args) {
+		Greeting.hi();
+	}
+}
+</code></pre>
+-위 코드는 오류를 낸다.   
+-이유 : hi는 Greeting 클래스 밖에서 직접 접근해서 사용할 수 없기 때문(private 제약조건)   
+
+* Static
+<pre><code>
+class Print{
+    public String delimiter;
+    public void a() {
+        System.out.println(this.delimiter);
+        System.out.println("a");
+        System.out.println("a");
+    }
+    public void b() {
+        System.out.println(this.delimiter);
+        System.out.println("b");
+        System.out.println("b");
+         
+    }
+    public static void c(String delimiter) {
+        System.out.println(delimiter);
+        System.out.println("b");
+        System.out.println("b");
+    }
+}
+public class staticMethod {
+     
+    public static void main(String[] args) {
+//      Print.a("-");
+//      Print.b("-");
+         
+        // instance
+        Print t1 = new Print();
+        t1.delimiter = "-";
+        t1.a();
+        t1.b();
+        Print.c("$");
+         
+         
+//      Print.a("*");
+//      Print.b("*");
+         
+        Print t2 = new Print();
+        t2.delimiter = "*";
+        t2.a();
+        t2.b();
+    }
+}
+</code></pre>
+-Static이란 키워드가 붙은 메소드는 클래스의 메소드다.   
+-Static이란 키워드가 붙지 않은 메소드는 인스턴스의 메소드다.   
+-this.delimiter = t1,2의 값으로 지정한 delimiter이다.   
+-메소드가 인스턴스 소속일때는 static을 빼주어야 한다.   
+-메소드가 클래스 소속일때는 static이 존재하여야 한다.   
+
+< 2023-05-11 / JAVA 2 / 제어문 8 ~ 메소드 9 END >
+-------------
+
+<hr/>

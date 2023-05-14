@@ -758,3 +758,329 @@ public class AccountingClassApp {
 		a2.print();
 		
 		a1.print();
+
+
+This is an java2
+=============
+This is an 1
+-------------
+1
+조건을 구성하기 위해서 자바에서는 Boolean 데이터 타입과, 비교 연산 기능을 제공
+
+This is an 2
+-------------
+Boolean Datatype
+package javaflowcontrol;
+
+public class BooleanApp {
+
+	public static void main(String[] args) {
+		
+		System.out.println("One"); 
+		System.out.println(1);
+		
+		System.out.println(true);
+		System.out.println(false);
+		//Boolean에 속하는 데이터 타입은 두 개 
+		
+		String foo = "Hello world";
+		//String true = "Hello World"; // true, false는 변수의 이름으로 사용할 수 없다.
+		//reserved word : 쓰임이 있는,앞으로 그런 기능이 채택될 가능성이 있는 키워드들을 컴퓨터 언어가 이것을 사용하기로 예약되어있다.  
+		
+		System.out.println(foo.contains("world")); //true  foo에 world가 들어 있으므로 트루
+		System.out.println(foo.contains("egoing")); //false
+	}
+
+}
+
+This is an 3
+-------------
+3 비교연산자
+package javaflowcontrol;
+
+public class ComparisonOperatorApp {
+
+	public static void main(String[] args) {
+		
+		System.out.println(1 > 1); //false
+		System.out.println(1 == 1); //true
+		System.out.println(1 < 1); //false
+		System.out.println(1 >= 1); // true
+
+	}
+
+}
+
+This is an 4
+-------------
+# This is a 4-1
+조건문 형식
+package javaflowcontrol;
+
+public class IfApp {
+
+	public static void main(String[] args) {
+		
+		
+		System.out.println("a"); //a
+		if(true) {
+			System.out.println(1); //1
+		}//괄호 안이 true면 실행 , false면 실핼되지 않아
+		else {
+			System.out.println(2);
+		}//if(false)를 else라고 해도 똑같음
+		System.out.println("b"); //b
+		
+		
+		
+		
+		if(false) {
+			System.out.println(1); //1
+		}else {
+			if(true) {
+				System.out.println(2);
+			}else {
+				System.out.println(3); //조건문안에 또다른 조건문을 넣을 수 있다.
+			}	
+		}
+		
+		
+		if(false) {
+			System.out.println(1); 
+		}else if(true) {
+			System.out.println(2);
+	    }else {
+	    	System.out.println(3); 
+			}
+		//true면 1실행, false면 else if(true)의 값이 실행 else if(false)면 3실행
+	}
+}
+
+## This is a 4-2
+조건문 응용 1
+package javaflowcontrol;
+
+public class AuthApp {
+
+	public static void main(String[] args) {
+		
+		String id = "egoing";
+		String inputId = args[0];
+		
+		String pass = "1111";
+		String inputPass = args[1];
+		
+		System.out.println("Hi.");
+		
+		//if(inputId == id){ //실행시켰을때 Master!가 안나오고 Who are you?가 나옴.
+//		if(inputId.equals(id)) {
+//			if(inputPass.equals(pass)) {
+//				System.out.println("Master!");
+//			} else {
+//				System.out.println("Wrong password!");
+//			}
+//		}else {
+//				System.out.println("Who are you?");
+//			}
+		
+		if(inputId.equals(id)) {//id가 같고 pass가 같다면 Master!가 출력되게 하는 논리 연산자
+			if(inputPass.equals(pass)) {
+				System.out.println("Master!");
+			} else {
+				System.out.println("Wrong password!");
+ 		    }
+		}else {
+				System.out.println("Who are you?");
+			}//조건문이 두 개
+		
+		
+		if(inputId.equals(id) && inputPass.equals(pass)) {//논리 연산자 : && : 앞에꺼가 참이고 뒤에꺼가 참이면 전체가 참이되게 하는 연산자
+			                                                 //둘 중 하나라도 틀리면 Who are you?가 출력됨
+				System.out.println("Master!");
+		}else {
+				System.out.println("Who are you?");
+		}
+		
+	 }
+  }
+}
+
+This is an 5
+-------------
+primitive : 원시 : 더 이상 쪼갤 수 없는
+- boolean, int, duoble, short, long, float, char
+
+non primitive : 
+- String, Array, Data, File
+
+
+int p1 = 1 
+int p2 = 1 
+-> p1 == p2 -> true(같은 곳에 위치)
+
+String o1 = new string("java")
+String o2 = new string("java")
+-> o1 == o2 -> false(다른 곳에 위치)
+
+원시 데이터 타입이 아닌 객체들은 equals라고 하는 메소드를 다들 가지고 있다.
+o1.equals(o2) -> true(내용이 같다면)
+
+== (동등 바교 연산자) : 같은 곳에 있는지
+equals : 내용이 같은지 따져보는 취지로 만들어진 메소드
+
+원시 데이터 타입을 할 때는 ==(동등 비교 연산자)를 쓰면 됨. equals를 가지고 있지 않으므로 쓰지x
+원시 데이터 타입이 아닌것은 equals를 쓰면 됨.
+
+String o3 = "java2"
+String o3 = "java2"
+(같은 위치)
+-> o3 == o4 -> true
+
+This is an 6
+-------------
+논리 연산자
+
+package javaflowcontrol;
+
+public class LogicalOperatorApp {
+
+	public static void main(String[] args) {
+		
+		System.out.println(1 == 1);
+		
+		// AND
+		System.out.println(true && true); // true
+		System.out.println(true && false); // false
+		System.out.println(false && true); // false
+		System.out.println(false && false); // false
+		
+		// OR (둘 중 하나라도 트루면 트루다)
+		System.out.println(true || true); // true
+		System.out.println(true || false); // true
+		System.out.println(false || true); // true
+		System.out.println(false || false); // false
+		
+		// not
+		System.out.println(!true); // false
+		System.out.println(!false); // true
+
+	}
+
+}
+
+
+package javaflowcontrol;
+
+public class AuthApp2 {
+
+	public static void main(String[] args) {
+		
+		String id = "egoing";
+		String inputId = args[0];
+		
+		String pass = "1111";
+		String pass2 = "2222";
+		String inputPass = args[1];
+		
+		
+		System.out.println("Hi.");
+		
+		boolean isRightPass = (inputPass.equals(pass) || inputPass.equals(pass2));
+		if(inputId.equals(id) && isRightPass ) {
+				System.out.println("Master!");
+		}else {
+				System.out.println("Who are you?");
+		}
+		
+	}
+}
+
+This is an 7
+-------------
+# This is a 7-1
+반복문
+
+package javaflowcontrol;
+
+public class LoopApp {
+
+	public static void main(String[] args) {
+
+
+		System.out.println(1);
+		System.out.println("=== while ===");
+		int i=0;
+		while(i < 3) {
+			System.out.println(2);
+		    System.out.println(3);
+		    // i = i+1;
+		    i++;
+		}//while(true)하면 무한반복
+		
+		System.out.println("=== for ===");
+		for(int j=0; j<3; j++) {
+			System.out.println(2);
+		    System.out.println(3);
+		}
+		
+		System.out.println(4);
+		
+
+	}
+
+}
+
+## This is a 7-2
+배열
+
+package javaflowcontrol;
+
+public class ArrayApp {
+
+	public static void main(String[] args) {
+
+
+		//egoing, jinhuck, youbin
+		//String users = "egoing, jinhuck, youbin";
+		String[] users = new String[3];
+		users[0] = "egoing";
+		users[1] = "jinhuck";
+		users[2] = "youbin";
+		
+		System.out.println(users[1]);
+		System.out.println(users.length);//3칸짜리 배열이다
+		
+		
+		int[] scores = {10,100,100};
+		System.out.println(scores[1]);
+		System.out.println(scores.length);
+	}
+
+}
+
+### This is a 7-3
+반복문 + 배열
+
+package javaflowcontrol;
+
+public class LoopArray {
+
+	public static void main(String[] args) {
+		/*
+		 * <li>egoing</li>
+		 * <li>jinhuck</li>
+		 * <li>youbin</li>
+		 */
+		
+		String[] users = new String[3];
+		users[0] = "egoing";
+		users[1] = "jinhuck";
+		users[2] = "youbin";
+		
+		 for(int i=0; i<users.length; i++) {
+			 System.out.println(users[i]+",");
+		 }
+		
+	}
+
+}

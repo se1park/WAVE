@@ -900,7 +900,6 @@ public class whymethod {
 
 }
 
-
 //메소드의 장점은 코드가 짧아지고 코드의 사용의 용이, 수정이 쉽다는 장점이 있지만 함수안에 어떤 코드가 있는지 보기 전에는 알아채기 어렵다는 단점이 있다.
 import java.io.FileWriter;
 import java.io.IOException;
@@ -958,8 +957,7 @@ public class AccountingApp {
 		
 	}
 
-}
-
+}	
 
 
 class Greeting{
@@ -1027,7 +1025,6 @@ public class staticmethod {
 }
 
 
-
 import java.io.FileWriter;
 import java.io.IOException;
 public class OthersAppOOP {
@@ -1051,6 +1048,7 @@ public class OthersAppOOP {
 	}
 
 }
+
 
 
 public class MyOOP {
@@ -1083,6 +1081,8 @@ public class MyOOP {
 
 
 }
+
+
 클래스의 장점 내부의 코드가 수정이 필요할 때 수많은 코드를 모두 수정할 필요 없이 클래스 내부를 수정해 주면 된다.
 class Print{
 	public static String delimiter = "";
@@ -1112,7 +1112,6 @@ public class MyOOP{
 		Print.B();
 	}
 }
-
 
 //public 접근제어자
 여러 개의 클래스를 하나의 파일에 쓸 경우 한눈에 코드를 파악하기 좋지만 너무 길어질 경우 가독성이 떨어질 것 이다. 
