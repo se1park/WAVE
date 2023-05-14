@@ -979,3 +979,142 @@ public class AccesLevelModifierMethod {
 }
 //private는 클래스 내부에서만 사용가능하다.
 //public은 클래스 외부에서도 사용이 가능하다.1
+
+0514
+//static이 있는 메소드는 class method다
+//sttic이 없는 메소드는 instance method이다
+class Print{
+	public String delimiter;
+	public void a() {
+		System.out.println(this.delimiter);//메소드가 인스턴스 소속일 경우 static을 사용하지 않는다
+		System.out.println("a");
+		System.out.println("a");
+	}
+	public void b () {
+		System.out.println(this.delimiter);
+		System.out.println("b");
+		System.out.println("b");
+		
+	}
+	public static void c(String delimiter) {
+		System.out.println(delimiter);
+		System.out.println("b");
+		System.out.println("b");
+	}
+}
+public class staticmethod {
+	
+	public static void main(String[] args) {
+		
+//		Print.a("-");
+//		Print.b("-");
+		
+		Print t1 = new Print();//앞에 new가 붙으면 복제가 된다,instance
+		t1.delimiter = "-";
+		t1.a();
+		t1.b();
+		Print.c("$");//class소속이기 때문에 static을 사용해서 불러옴
+		
+		Print t2 = new Print();
+		t2.delimiter = "*";
+		t2.a();
+		t2.b();
+		
+
+	}
+	
+
+}
+
+
+
+import java.io.FileWriter;
+import java.io.IOException;
+public class OthersAppOOP {
+
+	public static void main(String[] args) throws IOException {
+		//class: System, Math, FileWriter
+		//instance : f1, f2
+		
+		System.out.println(Math.PI);
+		System.out.println(Math.ceil(1.8));
+		
+		FileWriter f1 = new FileWriter("data.txt");
+		f1.write("Hello");
+		f1.write("java");
+		f1.close();
+		
+		FileWriter f2 = new FileWriter("data2.txt");
+		f2.write("Hello");
+		f2.write("java2");
+		f2.close();
+	}
+
+}
+
+
+public class MyOOP {
+	
+	public static void main(String[] args) {
+		delimiter = "----";
+		printA();
+		printA();
+		printB();
+		printB();
+		
+		delimiter = "****";
+		printA();
+		printA();
+		printB();
+		printB();
+		
+	}
+	public static String delimiter = "";
+	public static void printA() {
+		System.out.println(delimiter);
+		System.out.println("A");
+		System.out.println("A");
+	}
+	public static void printB() {
+		System.out.println(delimiter);
+		System.out.println("B");
+		System.out.println("B");
+	}
+
+
+}
+클래스의 장점 내부의 코드가 수정이 필요할 때 수많은 코드를 모두 수정할 필요 없이 클래스 내부를 수정해 주면 된다.
+class Print{
+	public static String delimiter = "";
+	public static void A() {
+		System.out.println(delimiter);
+		System.out.println("A");
+		System.out.println("A");
+	}
+	public static void B() {
+		System.out.println(delimiter);
+		System.out.println("B");
+		System.out.println("B");
+	}
+}
+public class MyOOP{
+	public static void main(String[] args) {
+		Print.delimiter = "----";
+		Print.A();
+		Print.A();
+		Print.B();
+		Print.B();
+		
+		Print.delimiter = "****";
+		Print.A();
+		Print.A();
+		Print.B();
+		Print.B();
+	}
+}
+
+
+//public 접근제어자
+여러 개의 클래스를 하나의 파일에 쓸 경우 한눈에 코드를 파악하기 좋지만 너무 길어질 경우 가독성이 떨어질 것 이다. 
+각각 하나의 파일에 쓰는 경우 기능에 따라 분리해 관리할 수 있어 좋지만 한눈에 코드 파악하기에 어려울 것이다.
+
