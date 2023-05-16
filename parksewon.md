@@ -1117,3 +1117,40 @@ public class MyOOP{
 여러 개의 클래스를 하나의 파일에 쓸 경우 한눈에 코드를 파악하기 좋지만 너무 길어질 경우 가독성이 떨어질 것 이다. 
 각각 하나의 파일에 쓰는 경우 기능에 따라 분리해 관리할 수 있어 좋지만 한눈에 코드 파악하기에 어려울 것이다.
 
+0515
+
+class Foo{
+	public static String classVar = "I class var";
+	public String instanceVar = "I instance var";
+	public static void classMethod() {
+		System.out.println(classVar);
+		//System.out.println(instanceVar);
+	}
+	public void instanceMethod() {
+		System.out.println(classVar);
+		System.out.println(instanceVar);
+	}
+}
+public class StaticApp {
+
+	public static void main(String[] args) {
+		
+		System.out.println(Foo.classVar);
+		//System.out.println(Foo.instanceVar);
+		Foo.classMethod();
+		//Foo.intanceMethod();
+		Foo f1 = new Foo();
+		Foo f2 = new Foo();
+		System.out.println(f1.classVar);
+		System.out.println(f1.instanceVar);
+		f1.classVar = "changed by f1";
+		System.out.println(Foo.classVar);
+		System.out.println(f2.classVar);
+		
+		f1.instanceVar = "changed by f1";
+		System.out.println(f1.instanceVar);
+		System.out.println(f2.instanceVar);
+		
+	}
+
+}
