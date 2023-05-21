@@ -1305,3 +1305,334 @@ super : 부모 클래스 인자
 
 this : 본인 클래스 인자
 부모클래스의 메서드를 오버라이딩 했을 때 자식클래스에서 부모 클래스를 사용하고 싶은 경우에 super 키워드 하나만으로 부모 클래스의 메서드에 접근 할 수 있다는 점이 편리하다.
+
+
+0521
+class Cal{
+    int v1,v2;
+    Cal(int v1, int v2){
+        System.out.println("Cal init!!");
+        this.v1 = v1; this.v2 = v2;
+    }
+    public int sum(){return this.v1+v2;}
+}
+
+// Compile Error
+class Cal3 extends Cal{
+    
+    public int minus(){return this.v1-v2;}
+}
+
+
+class Cal{
+    int v1,v2;
+    
+    public int sum(){return this.v1+v2;}
+}
+class Cal3 extends Cal{
+	Cal3(int v1, int v2) {
+		this.v1 = v1;
+		this.v2 = v2;
+        System.out.println("Cal3 init!!");
+    }
+    public int minus(){return this.v1-v2;}
+}
+
+public class InheritanceApp {
+
+	public static void main(String[] args) {
+		Cal c = new Cal();
+        Cal3 c3 = new Cal3(); // Compile Error
+
+
+		class Cal{
+    int v1,v2;
+    Cal(int v1, int v2){
+        System.out.println("Cal init!!");
+        this.v1 = v1; this.v2 = v2;
+    }
+    public int sum(){return this.v1+v2;}
+}
+class Cal3 extends Cal{
+    Cal3(int v1, int v2) {
+        super(v1, v2);
+        System.out.println("Cal3 init!!");
+    }
+    public int minus(){return this.v1-v2;}
+}
+public class InheritanceApp {
+    public static void main(String[] args) {
+        Cal c = new Cal(2,1);
+        Cal3 c3 = new Cal3(2, 1);
+        System.out.println(c3.sum()); // 3
+        System.out.println(c3.minus()); // 1
+    }
+}
+
+다형성(polymorphism)은 상속 관계에 있는 클래스간의 호환성을 높여주는 기능
+
+접근 제어자(access modifier)default의 경우 같은 패키지 내의 클래스에서는 접근할 수 있는 권한이 있고,protected의 경우 해당 클래스와 자식 클래스를 통해서 접근할 수 있다.
+
+final 키워드는 상속과 관련하여 제한을 걸어주는 키워드이다.만약 현재 클래스에서 더 이상 자식 클래스를 생성하지 못하게 막기 위해서는 클래스에 final 키워드를 삽입한다. 그리고, 메소드가 자식 클래스에서 더 이상 오버라이드 되기를 원하지 않는다면 메소드에 final 키워드를 삽입합니다.
+
+abstract 키워드는 해당 클래스, 메소드가 재정의가 필요하다는 것을 강제하는 키워드 이다. abstract 메소드는 선언만 되어 있는 상태이고, abstract 클래스는 인스턴스로 만들 수 없다. 만약 클래스 안에 abstract 메소드가 있다면 그 클래스는 abstract 클래스여야 한다.
+
+인터페이스
+class DummyCal {
+	public int sum(int v1, int v2) {
+		// do something
+        return result_value;
+	}
+}
+
+class RealCal {
+	public int sum(int v1, int v2, int v3) {
+		return v1 + v2 + v3;
+	}
+}
+
+interface Calculable {
+	int sum(int v1, int v2);
+}
+class RealCal implements Calculable {
+
+	public int sum(int v1, int v2) {
+		return v1 + v2;
+	}	
+}
+
+interface : 규격 지정
+
+메소드에서 implements 인터페이스
+
+시에 해당 메소드에서는 interface의 규격 메소드가 생성됨.
+
+인스턴스로 해당 메소드 생성.
+
+(A a = new A();)
+
+a.해당 메소드로 기능 정립 및 호출
+
+
+interface Calculable {
+	double PI = 3.14;
+	int sum(int v1, int v2);
+}
+interface Printable {
+	void print();
+}
+class RealCal implements Calculable, Printable {
+
+	public int sum(int v1, int v2) {
+		return v1 + v2;
+	}
+
+	public void print() {
+		System.out.println("this is RealCal!!!");
+	}	
+	
+}
+
+public class InterfaceApp {
+
+	public static void main(String[] args) {
+		RealCal c = new RealCal();
+		System.out.println(c.sum(2, 1));
+		c.print();
+		System.out.println(c.PI);
+	}
+
+}
+
+인터페이스는 껍데기만 만드는 구조(메소드 껍데기 만들기) 실제 구현은 implements받은 클래스 내 메소드에서 실 구현.
+
+
+
+interface Calculable {
+	double PI = 3.14;
+	int sum(int v1, int v2);
+}
+interface Printable {
+	void print();
+}
+class RealCal implements Calculable, Printable {
+
+	public int sum(int v1, int v2) {
+		return v1 + v2;
+	}
+
+	public void print() {
+		System.out.println("this is RealCal!!!");
+	}	
+	
+}
+
+public class InterfaceApp {
+
+	public static void main(String[] args) {
+		Calculable c = new RealCal();
+		System.out.println(c.sum(2, 1));
+		c.print(); // Compile Error
+		System.out.println(c.PI);
+	}
+
+}
+A a = new B()
+A 메소드 기준으로 a가 생성된다.
+뒤 B의 메소드 내 함수들은 무존재, 무기능으로 감쳐짐(=다형성)
+
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+
+public class FileWriterApp {
+	public static void main(String[] args) throws IOException {
+		Writer fileWriter = new FileWriter("filewriter.txt");
+		fileWriter.write("data 1");
+		fileWriter.write("data 2");
+		fileWriter.write("data 3");
+
+		fileWriter.close();
+	}
+}
+
+예외
+개발자는 '어떤 기능을 하는 코드'를 '의도'를 가지고 만들게 되는데, 모든 사람이 그 의도에 맞춰서 행동하는 것은 불가능하기 때문에 그 "예외" 케이스에 대해 처리하는 코드를 작성해주어야 한다.
+
+public class ExceptionApp {
+	public static void main(String[] args) throws ArithmeticException {
+		System.out.println(1);
+		System.out.println(2/0); // Run-Time Exception ArithmeticException
+		System.out.println(3); 
+	}
+}
+
+
+public class ExceptionApp {
+	public static void main(String[] args) throws ArithmeticException {
+		System.out.println(1);
+		int[] scores = {10, 20, 30};
+
+		try {
+			System.out.println(2);
+			System.out.println(scores[3]); //ArrayIndexOutOfBoundsException
+			// 여기까지 실행 -> catch(ArrayIndexOutOfBoundsException e)문으로 이동
+			System.out.println(3);
+			System.out.println(2/0); //ArithmeticException
+			System.out.println(4);
+		} catch(ArithmeticException e) {
+			System.out.println("잘못된 계산이네요.");
+		} catch(ArrayIndexOutOfBoundsException e) {
+			System.out.println("없는 값을 찾고 계시네요 ^^");
+		}		
+		System.out.println(5); 
+	}
+}
+
+
+public class ExceptionApp {
+	public static void main(String[] args) throws ArithmeticException {
+		System.out.println(1);
+		int[] scores = {10, 20, 30};
+
+		try {
+			System.out.println(2);
+			System.out.println(scores[3]); //ArrayIndexOutOfBoundsException
+			System.out.println(3);
+			System.out.println(2/0); //ArithmeticException
+			System.out.println(4);
+		} catch (ArithmeticException e) {
+			System.out.println("계산이 잘못된 것 같아요.");
+		} catch (Exception e) {
+			System.out.println("뭔가 이상합니다. 오류가 발생했습니다. ");
+		}	
+		System.out.println(5); 
+	}
+}
+예외를 포괄적으로 처리하는것은 좋지 않다.
+
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class CheckedExceptionApp {
+
+	public static void main(String[] args) {
+		try {
+			FileWriter f = new FileWriter("data.txt");
+			f.write("Hello");
+			f.close();
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+}
+
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class CheckedExceptionApp {
+
+	public static void main(String[] args) {
+		FileWriter f = null;
+		try {
+			f = new FileWriter("data.txt");
+			f.write("Hello");
+			// close를 하기 전에 예외가 발생한다면 close가 실행되지 않음
+			// f.close();
+		} catch(IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (f != null) {
+				try {
+					f.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}			
+		}
+	}
+
+}
+
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class TryWithResource {
+
+	public static void main(String[] args) {
+		try (FileWriter f = new FileWriter("data.txt")) {
+			f.write("Hello");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}
+try문의 괄호 안에 들어가는 인스턴스 자원의 클래스가 "AutoCloseable"을 인터페이스로 가지고 있어야 한다.
+
+
+public class MyException {
+
+	public static void main(String[] args) {
+		throw new RuntimeException("무언가 문제가 있습니다.");
+
+	}
+
+}
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class ThrowException {
+
+	public static void main(String[] args) throws IOException {
+		FileWriter f = new FileWriter("./data.txt");
+		f.write("Hello");
+		f.close();
+	}
+
+}
