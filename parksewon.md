@@ -1636,3 +1636,53 @@ public class ThrowException {
 	}
 
 }
+
+*****
+This is an H1
+0713
+스트링부트
+
+
+스프링 입문
+Spring initializr.
+Project meta: 프로젝트 이름
+Artifact 빌드 되어 나올 때 결과물
+Dependencies : 프로젝트 실행시 어떤 라이브러리를 땡겨 쓸 것인가.
+사용하는 라이브러리: spring web, thymeleaf
+Generate = 다운로드 and 압축해제 → intelij 에서 실행. → 처음 실행 시 외부에서 라이브러리 다운로드.
+Main, test 폴더가 다 넣어져 있음. → 현재 개발 트렌드에서 test 코드가 중요함.
+Main에는 Java 와 resources 폴더가 있고 Java 외에 대부분은 resources에 포함된다.
+Build.gradle = 버전 설정, 라이브러리를 땡겨옴.
+Test 라이브러리가 자동으로 들어감. Junit version 5가 자동으로 들어감. 다운로드 → mavencentral 에서 다운. 필요시 특정 URL 사용가능.
+. Gitignore: 소스코드 관리.
+Hellospringapplication main 문 실행. Localhost 8080 http 실행 → 에러시 성공. →tomcat 웹서버에서 springbootapplication 실행.
+라이브러리 살펴보기.
+External libraries → spring boot web을 실행하기 위해 여러가지의 라이브러리가 필요(서로 의존관계임) → 알아서 라이브러리를 가져옴.
+Spring-web mvc: 스프링 웹 mvc
+Spring-boot - starter- thymeleaf: 타임리프 템플릿 엔진(view)
+Logging으로 출력 → 심각한 에러를 따로 모아 볼수있고 로그파일이 관리됨.
+Slf4j= 인터페이스, logback = 실제 로그를 어떤 구현체로 출력할 것인가.
+테스트 할때에는 junit 5 사용
+
+Welcome page 만들기
+Welcome page: 도메인을 누루고 왔을때의 첫 화면.
+Static 파일에 index.HTML 생성 →welcome page가됨.
+Index. HTML에 head와 바디를 포함해 hello를 입력 → Main 절 실행 → local host 8080 → hello 입력되어 있음.
+'''
+package hello.hellospring.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class HelloController {
+    @GetMapping("hello")
+    public String hello(Model model){
+        model.addAttribute("data","hello!!");
+                return"hello";
+    }
+}
+'''
+localhost:8080/hello에서 data가 hello!!!로 치환되어 보여짐
+retrun"hello"는 hello.html을 찾아서 랜더링 하라는 뜻임
