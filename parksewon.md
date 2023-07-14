@@ -1638,11 +1638,10 @@ public class ThrowException {
 }
 
 *****
-This is an H1
-=============
-0713
-This is an H2
--------------
+
+# 0713
+## This is an H2
+
 1.스트링부트
 
 
@@ -1666,18 +1665,19 @@ Spring-boot - starter- thymeleaf: 타임리프 템플릿 엔진(view)
 Logging으로 출력 → 심각한 에러를 따로 모아 볼수있고 로그파일이 관리됨.
 Slf4j= 인터페이스, logback = 실제 로그를 어떤 구현체로 출력할 것인가.
 테스트 할때에는 junit 5 사용
-This is an H2
--------------
-2.Welcome page 만들기
+
+## 2.Welcome page 만들기
 Welcome page: 도메인을 누루고 왔을때의 첫 화면.
 Static 파일에 index.HTML 생성 →welcome page가됨.
 Index. HTML에 head와 바디를 포함해 hello를 입력 → Main 절 실행 → local host 8080 → hello 입력되어 있음.
-'''
+```
 package hello.hellospring.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+
 
 @Controller
 public class HelloController {
@@ -1687,6 +1687,6 @@ public class HelloController {
                 return"hello";
     }
 }
-'''
+```
 localhost:8080/hello에서 data가 hello!!!로 치환되어 보여짐
 retrun"hello"는 hello.html을 찾아서 랜더링 하라는 뜻임
