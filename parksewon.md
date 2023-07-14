@@ -1641,13 +1641,12 @@ public class ThrowException {
 *****
 
 # 0713
-## This is an H2
 
-1.스트링부트
+## 1.스트링부트
 
 
 스프링 입문
-Spring initializr.
+Spring initializr
 Project meta: 프로젝트 이름
 Artifact 빌드 되어 나올 때 결과물
 Dependencies : 프로젝트 실행시 어떤 라이브러리를 땡겨 쓸 것인가.
